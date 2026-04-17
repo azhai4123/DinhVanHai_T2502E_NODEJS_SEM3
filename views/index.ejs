@@ -1,0 +1,75 @@
+<% 
+  var fv = (typeof formValues !== 'undefined' && formValues) ? formValues : { treename: '', description: '', image: '' };
+  var treeList = (typeof trees !== 'undefined' && trees) ? trees : [];
+%>
+<%- include('partials/header', { title: 'TreeShop', active: 'shop' }) %>
+
+  <div class="mb-10">
+    <h1 class="text-3xl font-bold text-forest-900">Danh sách cây</h1>
+    <p class="mt-1 text-stone-600">Thêm cây mới hoặc xem các cây đã lưu trong MongoDB (collection <code class="rounded bg-stone-200 px-1 text-sm">TreeCollection</code>).</p>
+  </div>
+
+  <section class="mb-12 rounded-2xl border border-emerald-100 bg-white p-6 shadow-sm">
+    <h2 class="text-lg font-semibold text-forest-800 mb-4">Thêm cây</h2>
+    <form action="/" method="post" class="grid gap-4 sm:grid-cols-2" autocomplete="off">
+      <div class="sm:col-span-2">
+        <label for="treename" class="block text-sm font-medium text-stone-700">Tên cây <span class="text-red-600">*</span></label>
+        <input type="text" id="treename" name="treename" required
+          value="<%= fv.treename %>"
+          class="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+          placeholder="Ví dụ: Phượng vĩ" />
+      </div>
+      <div class="sm:col-span-2">
+        <label for="description" class="block text-sm font-medium text-stone-700">Mô tả <span class="text-red-600">*</span></label>
+        <textarea id="description" name="description" required rows="3"
+          class="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+          placeholder="Mô tả ngắn về cây..."><%= fv.description %></textarea>
+      </div>
+      <div class="sm:col-span-2">
+        <label for="image" class="block text-sm font-medium text-stone-700">Ảnh (URL)</label>
+        <input type="text" id="image" name="image"
+          value="<%= fv.image %>"
+          class="mt-1 w-full rounded-lg border border-stone-300 px-3 py-2 shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+          placeholder="https://..." />
+      </div>
+      <div class="sm:col-span-2 flex flex-wrap gap-3">
+        <button type="submit" class="rounded-lg bg-emerald-600 px-5 py-2.5 text-white font-medium shadow hover:bg-emerald-700 transition">
+          Thêm cây
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <section class="flex flex-wrap items-center justify-between gap-4 mb-6">
+    <h2 class="text-lg font-semibold text-forest-800">Tất cả cây trong database</h2>
+    <form action="/reset" method="post" onsubmit="return confirm('Xóa hết dữ liệu cây? Hành động này không hoàn tác.');">
+      <button type="submit" class="rounded-lg border border-red-300 bg-white px-4 py-2 text-sm font-medium text-red-700 hover:bg-red-50 transition">
+        Reset (xóa hết)
+      </button>
+    </form>
+  </section>
+
+  <% if (!treeList || treeList.length === 0) { %>
+    <p class="rounded-xl border border-dashed border-stone-300 bg-white/60 px-6 py-12 text-center text-stone-500">Chưa có cây nào. Hãy thêm cây ở form phía trên.</p>
+  <% } else { %>
+    <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <% treeList.forEach(function (tree) { %>
+        <li class="overflow-hidden rounded-2xl border border-emerald-100 bg-white shadow-sm transition hover:shadow-md">
+          <div class="aspect-[4/3] bg-stone-100">
+            <% if (tree.image) { %>
+              <img src="<%= tree.image %>" alt="<%= tree.treename %>" class="h-full w-full object-cover" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+              <div class="hidden h-full w-full items-center justify-center text-stone-400 text-sm p-4 text-center">Không tải được ảnh</div>
+            <% } else { %>
+              <div class="flex h-full w-full items-center justify-center text-5xl text-emerald-200">🌿</div>
+            <% } %>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-forest-900"><%= tree.treename %></h3>
+            <p class="mt-2 text-sm text-stone-600 line-clamp-4"><%= tree.description %></p>
+          </div>
+        </li>
+      <% }); %>
+    </ul>
+  <% } %>
+
+<%- include('partials/footer') %>

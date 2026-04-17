@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= typeof title !== 'undefined' ? title : 'TreeShop' %></title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: { 50: '#f0fdf4', 600: '#16a34a', 800: '#166534', 900: '#14532d' }
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-emerald-50 to-stone-100 text-stone-800 flex flex-col">
+  <header class="bg-forest-900 text-white shadow-lg">
+    <div class="mx-auto max-w-5xl px-4 py-4 flex flex-wrap items-center justify-between gap-4">
+      <a href="/" class="text-xl font-semibold tracking-tight hover:text-emerald-200 transition">🌳 TreeShop</a>
+      <nav class="flex gap-6 text-sm font-medium">
+        <a href="/" class="rounded-lg px-3 py-2 hover:bg-white/10 <%= typeof active !== 'undefined' && active === 'shop' ? 'bg-white/15' : '' %>">TreeShop</a>
+        <a href="/about" class="rounded-lg px-3 py-2 hover:bg-white/10 <%= typeof active !== 'undefined' && active === 'about' ? 'bg-white/15' : '' %>">About me</a>
+      </nav>
+    </div>
+  </header>
+  <main class="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
