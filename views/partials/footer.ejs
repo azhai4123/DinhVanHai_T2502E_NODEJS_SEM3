@@ -1,14 +1,33 @@
-  </main>
-  <footer class="border-t border-emerald-200/80 bg-white/80 backdrop-blur mt-auto">
-    <div class="mx-auto max-w-5xl px-4 py-6 text-center text-sm text-stone-600">
-      <p class="font-medium text-forest-800">TreeShop — Cửa hàng cây xanh</p>
-      <p class="mt-1">© <%= new Date().getFullYear() %> — Express · EJS · MongoDB</p>
-      <div class="mt-3 flex justify-center gap-4 text-xs">
-        <a href="/" class="text-emerald-700 hover:underline">TreeShop</a>
-        <span class="text-stone-300">|</span>
-        <a href="/about" class="text-emerald-700 hover:underline">About me</a>
+          </div>
+          <footer class="content-footer footer bg-footer-theme">
+            <div class="container-xxl">
+              <div class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
+                <div class="text-body mb-2 mb-md-0">
+                  © <%= new Date().getFullYear() %> — <strong>TreeShop</strong> · Express · EJS · MongoDB
+                </div>
+                <div class="d-none d-lg-inline-block">
+                  <a href="/" class="footer-link me-4">TreeShop</a>
+                  <a href="/about" class="footer-link">About me</a>
+                </div>
+              </div>
+            </div>
+          </footer>
+          <div class="content-backdrop fade"></div>
+        </div>
       </div>
     </div>
-  </footer>
+    <div class="layout-overlay layout-menu-toggle"></div>
+    <div class="drag-target"></div>
+  </div>
+  <script src="/materio-assets/vendor/libs/jquery/jquery.js"></script>
+  <script src="/materio-assets/vendor/libs/popper/popper.js"></script>
+  <script src="/materio-assets/vendor/js/bootstrap.js"></script>
+  <script src="/materio-assets/vendor/libs/node-waves/node-waves.js"></script>
+  <script src="/materio-assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+  <script src="/materio-assets/vendor/libs/hammer/hammer.js"></script>
+  <script src="/materio-assets/vendor/libs/i18n/i18n.js"></script>
+  <script src="/materio-assets/vendor/libs/typeahead-js/typeahead.js"></script>
+  <script src="/materio-assets/vendor/js/menu.js"></script>
+  <script src="/materio-assets/js/main.js"></script>
 </body>
 </html>

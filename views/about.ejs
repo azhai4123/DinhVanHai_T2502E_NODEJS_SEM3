@@ -1,22 +1,22 @@
 <%- include('partials/header', { title: 'About me', active: 'about' }) %>
 
-  <article class="max-w-2xl rounded-2xl border border-emerald-100 bg-white p-8 shadow-sm">
-    <h1 class="text-3xl font-bold text-forest-900">About me</h1>
-    <p class="mt-4 text-stone-600 leading-relaxed">
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title mb-3">About me</h4>
+    <p class="text-muted mb-3">
       Đây là trang giới thiệu cho bài thi <strong>TreeShop</strong> — ứng dụng web dùng
       <strong>Express</strong>, <strong>EJS</strong> và <strong>MongoDB</strong> để quản lý thông tin cây
       (tên, mô tả, ảnh).
     </p>
-    <p class="mt-4 text-stone-600 leading-relaxed">
+    <p class="text-muted mb-3">
       Bạn có thể chỉnh sửa nội dung trang này theo thông tin cá nhân (họ tên, lớp, mã sinh viên) cho bài nộp.
     </p>
-    <ul class="mt-6 space-y-2 text-sm text-stone-700">
-      <li>• Header &amp; footer dùng <code class="rounded bg-stone-100 px-1">&lt;%- include %&gt;</code> cho TreeShop và About me.</li>
-      <li>• Database: <code class="rounded bg-stone-100 px-1">TreeShop</code> — collection <code class="rounded bg-stone-100 px-1">TreeCollection</code>.</li>
+    <ul class="mb-4">
+      <li class="mb-2">Giao diện admin dựa trên <strong>Materio</strong> (vertical menu): sidebar + navbar.</li>
+      <li class="mb-2">Database: <code>TreeShop</code> — collection <code>TreeCollection</code>.</li>
     </ul>
-    <p class="mt-8">
-      <a href="/" class="font-medium text-emerald-700 hover:underline">← Quay lại TreeShop</a>
-    </p>
-  </article>
+    <a href="/" class="btn btn-primary">← Quay lại TreeShop</a>
+  </div>
+</div>
 
 <%- include('partials/footer') %>

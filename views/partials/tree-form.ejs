@@ -1,0 +1,60 @@
+<% 
+  var fv = (typeof formValues !== 'undefined' && formValues) ? formValues : { treename: '', description: '', image: '' };
+%>
+<div class="card mb-6">
+  <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <h5 class="mb-0"><%= typeof formTitle !== 'undefined' ? formTitle : 'Cây' %></h5>
+    <small class="text-body">Materio · form dọc có icon</small>
+  </div>
+  <div class="card-body">
+    <form action="<%= typeof formAction !== 'undefined' ? formAction : '/trees' %>" method="post" autocomplete="off">
+      <div class="input-group input-group-merge mb-6">
+        <span id="tree-name-icon" class="input-group-text"><i class="ri-plant-line ri-20px"></i></span>
+        <div class="form-floating form-floating-outline flex-grow-1 flex-shrink-1 min-w-0">
+          <input
+            type="text"
+            class="form-control"
+            id="tree-treename"
+            name="treename"
+            placeholder=" "
+            value="<%= fv.treename %>"
+            aria-describedby="tree-name-icon"
+            required />
+          <label for="tree-treename">Tên cây <span class="text-danger">*</span></label>
+        </div>
+      </div>
+      <div class="input-group input-group-merge mb-6">
+        <span id="tree-desc-icon" class="input-group-text"><i class="ri-file-text-line ri-20px"></i></span>
+        <div class="form-floating form-floating-outline flex-grow-1 flex-shrink-1 min-w-0">
+          <textarea
+            id="tree-description"
+            name="description"
+            class="form-control"
+            placeholder=" "
+            style="height: 100px"
+            aria-describedby="tree-desc-icon"
+            required><%= fv.description %></textarea>
+          <label for="tree-description">Mô tả <span class="text-danger">*</span></label>
+        </div>
+      </div>
+      <div class="input-group input-group-merge mb-6">
+        <span id="tree-img-icon" class="input-group-text"><i class="ri-image-line ri-20px"></i></span>
+        <div class="form-floating form-floating-outline flex-grow-1 flex-shrink-1 min-w-0">
+          <input
+            type="text"
+            class="form-control"
+            id="tree-image"
+            name="image"
+            placeholder=" "
+            value="<%= fv.image %>"
+            aria-describedby="tree-img-icon" />
+          <label for="tree-image">Ảnh (URL)</label>
+        </div>
+      </div>
+      <div class="d-flex flex-wrap gap-3">
+        <button type="submit" class="btn btn-primary"><%= typeof submitLabel !== 'undefined' ? submitLabel : 'Lưu' %></button>
+        <a href="/" class="btn btn-label-secondary">Về danh sách</a>
+      </div>
+    </form>
+  </div>
+</div>
